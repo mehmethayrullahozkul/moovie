@@ -1,0 +1,116 @@
+name: workarea_v1
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.5
+  go_router: ^13.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Sofia-Pro
+      fonts:
+        - asset: assets/fonts/sofia-pro-ultralight.otf
+          weight: 200
+        - asset: assets/fonts/sofia-pro-light.otf
+          weight: 300
+        - asset: assets/fonts/sofia-pro-regular.otf
+          weight: 400
+        - asset: assets/fonts/sofia-pro-medium.otf
+          weight: 500
+        - asset: assets/fonts/sofia-pro-semibold.otf
+          weight: 600
+        - asset: assets/fonts/sofia-pro-bold.otf
+          weight: 700
+        - asset: assets/fonts/sofia-pro-black.otf
+          weight: 900
+    - family: Nexa
+      fonts:
+        - asset: assets/fonts/nexa-light.otf
+          weight: 300
+        - asset: assets/fonts/nexa-regular.otf
+          weight: 400
+        - asset: assets/fonts/nexa-semibold.otf
+          weight: 600
+        - asset: assets/fonts/nexa-bold.otf
+          weight: 700
+        - asset: assets/fonts/nexa-black.ttf
+          weight: 900
+    - family: Gotham
+      fonts:
+        - asset: assets/fonts/gotham-book.ttf
+          weight: 400
+        - asset: assets/fonts/gotham-medium.ttf
+          weight: 500
+        - asset: assets/fonts/gotham-bold.otf
+          weight: 700
+        - asset: assets/fonts/gotham-black.otf
+          weight: 900
+        - asset: assets/fonts/gotham-light.otf
+          weight: 300
+        - asset: assets/fonts/gotham-thin.otf
+          weight: 100
+        - asset: assets/fonts/gotham-xlight.otf
+          weight: 200
+    - family: Zuume-Soft
+      fonts:
+        - asset: assets/fonts/zuume-soft-regular.ttf
+          weight: 400
+        - asset: assets/fonts/zuume-soft-black.ttf
+          weight: 900
+        - asset: assets/fonts/zuume-soft-light.ttf
+          weight: 300
+        - asset: assets/fonts/zuume-soft-bold.ttf
+          weight: 700
+        - asset: assets/fonts/zuume-soft-extrabold.ttf
+          weight: 800
+        - asset: assets/fonts/zuume-soft-medium.ttf
+          weight: 500
+        - asset: assets/fonts/zuume-soft-semibold.ttf
+          weight: 600
+        - asset: assets/fonts/zuume-soft-extralight.ttf
+          weight: 200
+    - family: Manjari
+      fonts:
+        - asset: assets/fonts/manjari-regular.ttf
+          weight: 400
+        - asset: assets/fonts/manjari-bold.ttf
+          weight: 700
+        - asset: assets/fonts/manjari-thin.ttf
+          weight: 200
+    - family: Typo-Grotesk-Rounded
+      fonts:
+        - asset: assets/fonts/typo-grotesk-rounded-regular.otf
+          weight: 400
+        - asset: assets/fonts/typo-grotesk-rounded-light.otf
+          weight: 300
+    - family: Nunito-Sans
+      fonts:
+        - asset: assets/fonts/nunito-sans-regular.ttf
+          weight: 400
+        - asset: assets/fonts/nunito-sans-light.ttf
+          weight: 300
+        - asset: assets/fonts/nunito-sans-bold.ttf
+          weight: 700
+        - asset: assets/fonts/nunito-sans-black.ttf
+          weight: 900
+        - asset: assets/fonts/nunito-sans-extrabold.ttf
+          weight: 800
+        - asset: assets/fonts/nunito-sans-medium.ttf
+          weight: 500
+        - asset: assets/fonts/nunito-sans-semibold.ttf
+          weight: 600
+        - asset: assets/fonts/nunito-sans-extralight.ttf
+          weight: 200
