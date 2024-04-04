@@ -7,6 +7,21 @@ class WA4Goal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WAGoalTemplate(pageIndex: index);
+    return const WAGoalTemplate(
+      pageIndex: index,
+      child: _Goal(),
+    );
+  }
+}
+
+class _Goal extends StatelessWidget {
+  const _Goal({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text("Goal for WA4"),
+      ),
+    );
   }
 }
