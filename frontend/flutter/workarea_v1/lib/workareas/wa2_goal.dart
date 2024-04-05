@@ -32,8 +32,16 @@ class _GoalState extends State<_Goal> {
     _controller2 = TextEditingController();
   }
 
+  @override
+  void dispose() {
+    _controller1.dispose();
+    _controller2.dispose();
+    super.dispose();
+  }
+
   void _toplamaYap() {
     toplam = int.parse(_controller1.text) + int.parse(_controller2.text);
+    /*  FocusManager.instance.primaryFocus?.unfocus(); */
   }
 
   @override
@@ -68,6 +76,7 @@ class _GoalState extends State<_Goal> {
             TextButton(
                 onPressed: () {
                   _toplamaYap();
+                  setState(() {});
                 },
                 child: Text("Toplama İşlemini Gerçekleştir")),
             Text(

@@ -15,10 +15,8 @@ class _Goal extends StatelessWidget {
   const _Goal({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Goal for WA5"),
-      ),
+    return Center(
+      child: Text("Goal for WA5"),
     );
   }
 }

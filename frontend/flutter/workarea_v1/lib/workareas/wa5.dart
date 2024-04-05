@@ -18,10 +18,8 @@ class _SolutionWidget extends StatelessWidget {
   const _SolutionWidget({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Change here with solution for WA5"),
-      ),
+    return Center(
+      child: Text("Change here with solution for WA5"),
     );
   }
 }
