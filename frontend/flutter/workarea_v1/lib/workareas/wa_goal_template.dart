@@ -10,6 +10,7 @@ class WAGoalTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Goal $pageIndex'),
         actions: [
