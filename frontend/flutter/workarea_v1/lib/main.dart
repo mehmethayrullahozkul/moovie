@@ -25,7 +25,7 @@ import 'package:workarea_v1/workareas/wa9_goal.dart';
 import 'package:workarea_v1/workareas/wa10.dart';
 import 'package:workarea_v1/workareas/wa10_goal.dart';
 
-void main() async {
+void main() async{
   runApp(GTUMoovieApp());
 }
 
