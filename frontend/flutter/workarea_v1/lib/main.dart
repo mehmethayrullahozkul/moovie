@@ -41,20 +41,17 @@ class GTUMoovieApp extends StatelessWidget {
       GoRoute(
           path: "/",
           builder: (context, state) => const MenuScreen(),
-          routes: [
-            ...List.generate(workAreas.length, (index) {
-              return GoRoute(
+          routes: List.generate(20, (index) {
+            return GoRoute(
                 path: "work-area-${index + 1}",
                 builder: (context, state) => workAreas[index][0],
                 routes: [
                   GoRoute(
                     path: "goal",
                     builder: (context, state) => workAreas[index][1],
-                  ),
-                ],
-              );
-            })
-          ]),
+                  )
+                ]);
+          })),
     ],
   );
 
@@ -120,3 +117,34 @@ const List<List<Widget>> workAreas = [
     WA10Goal(),
   ],
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ ...List.generate(workAreas.length, (index) {
+              return GoRoute(
+                path: "work-area-${index + 1}",
+                builder: (context, state) => workAreas[index][0],
+                routes: [
+                  GoRoute(
+                    path: "goal",
+                    builder: (context, state) => workAreas[index][1],
+                  ),
+                ],
+              );
+            })
+*/

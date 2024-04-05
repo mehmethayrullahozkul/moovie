@@ -40,17 +40,24 @@ class _GoalState extends State<_Goal> {
     mainColor = generateRandomWhitishColor(preference: randomColorPicker);
     return Scaffold(
       backgroundColor: mainColor,
-      body: Center(
-          child: Column(
-        children: [
-          ElevatedButton(
-              onPressed: () {
-                setState(() {});
-              },
-              child: Text("Reload All Page")),
-          _ColorfullButton1(),
-        ],
-      )),
+      body: Padding(
+        padding: EdgeInsets.only(
+          left: (MediaQuery.of(context).size.width - 320) / 2,
+          right: (MediaQuery.of(context).size.width - 320) / 2,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {});
+                },
+                child: Text("Reload All Page")),
+            _ColorfullButton1(),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -76,6 +83,7 @@ class _ColorfullButton1State extends State<_ColorfullButton1> {
     int randomColorPicker = math.Random().nextInt(3);
     Color mainColor = generateRandomWhitishColor(preference: randomColorPicker);
     return Container(
+      width: 320,
       color: mainColor,
       child: Material(
         color: Colors.transparent,
