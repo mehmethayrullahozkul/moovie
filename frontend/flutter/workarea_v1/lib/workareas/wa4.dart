@@ -7,6 +7,21 @@ class WA4 extends StatelessWidget {
   const WA4({super.key});
   @override
   Widget build(BuildContext context) {
-    return const WATemplate(pageIndex: index);
+    return const WATemplate(
+      pageIndex: index,
+      child: _SolutionWidget(),
+    );
+  }
+}
+
+class _SolutionWidget extends StatelessWidget {
+  const _SolutionWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text("Change here with solution for WA4"),
+      ),
+    );
   }
 }
