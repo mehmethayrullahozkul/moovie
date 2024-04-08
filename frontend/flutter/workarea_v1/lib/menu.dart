@@ -187,25 +187,3 @@ class MenuScreen extends StatelessWidget {
     );
   }
 }
-
-class MyVerticalText extends StatelessWidget {
-  final Text text;
-
-  const MyVerticalText({super.key, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Wrap(
-      runSpacing: 10,
-      direction: Axis.vertical,
-      alignment: WrapAlignment.center,
-      children: text.data!
-          .split("")
-          .map((string) => Text(
-                string,
-                style: text.style,
-              ))
-          .toList(),
-    );
-  }
-}

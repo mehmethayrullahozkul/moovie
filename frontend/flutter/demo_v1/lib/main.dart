@@ -121,9 +121,13 @@ class _IndexScreenState extends State<IndexScreen> {
                                   TextStyle(fontSize: 18, color: Colors.black),
                             ),
                             Text(
+<<<<<<< HEAD
                               exampleListOfUsers[index].messageCount != 0 ?
                               "Latest Message : ${exampleListOfUsers[index].messages[exampleListOfUsers[index].messageCount-1]}"
                                 : "No Messages",
+=======
+                              "${exampleListOfUsers[index].messageCount} Messages",
+>>>>>>> development
                               style:
                                   TextStyle(fontSize: 13, color: Colors.black),
                             )

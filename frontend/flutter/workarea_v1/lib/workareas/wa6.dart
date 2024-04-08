@@ -8,8 +8,19 @@ class WA6 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WATemplate(
+    return const WATemplate(
       pageIndex: index,
+      child: _SolutionWidget(),
+    );
+  }
+}
+
+class _SolutionWidget extends StatelessWidget {
+  const _SolutionWidget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text("Change here with solution for WA6"),
     );
   }
 }
