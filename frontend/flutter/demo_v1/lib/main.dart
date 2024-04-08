@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'dart:math' as math;
 
 List<User> exampleListOfUsers = [
-  User(name: "Example1", icon: Icons.abc),
-  User(name: "Example2", icon: Icons.abc),
+  User(name: "hayru", icon: Icons.abc),
+  User(name: "Exa", icon: Icons.abc),
   User(name: "Example3", icon: Icons.abc),
   User(name: "Example4", icon: Icons.abc),
   User(name: "Example5", icon: Icons.abc),
@@ -23,6 +24,21 @@ List<User> exampleListOfUsers = [
   User(name: "Example22", icon: Icons.abc),
   User(name: "Example23", icon: Icons.abc),
 ];
+
+String generateRandomString() {
+  int length = math.Random().nextInt(10) + 3;
+  return String.fromCharCodes(
+      List.generate(length, (index) => math.Random().nextInt(33) + 89));
+}
+
+IconData getRandomIcon() {
+  final List<int> points = <int>[0xe0b0, 0xe0b1, 0xe0b2, 0xe0b3, 0xe0b4];
+  const String chars = '0123456789ABCDEF';
+  int length = 3;
+  String hex = '0xe';
+  while (length-- > 0) hex += chars[(math.Random().nextInt(16)) | 0];
+  return IconData(int.parse(hex), fontFamily: 'MaterialIcons');
+}
 
 void main() {
   runApp(WhatsdownApp());
