@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 List<User> exampleListOfUsers = [
-  User(name: "Example1", icon: Icons.abc),
+  User(name: "Taha", icon: Icons.abc),
   User(name: "Example2", icon: Icons.abc),
   User(name: "Example3", icon: Icons.abc),
   User(name: "Example4", icon: Icons.abc),
@@ -43,6 +45,7 @@ class _WhatsdownAppState extends State<WhatsdownApp> {
   void initState() {
     super.initState();
     usersManager = UsersManager(users: exampleListOfUsers);
+
     routerConfig = GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
@@ -50,12 +53,19 @@ class _WhatsdownAppState extends State<WhatsdownApp> {
         GoRoute(
           path: '/',
           builder: (context, state) {
-            // TODO : implement the IndexScreen here, IndexScreen should take in the usersManager as a parameter
-            return Container();
+            return IndexScreen();
           },
-          // TODO : implement rest of the routes here:
-          // routes: []
         ),
+        ...List.generate(22, (index) {
+          return GoRoute(
+            path: '/message${index + 1}',
+            builder: (context, state) {
+              return Messages(person: exampleListOfUsers[index]);
+            },
+          );
+        })
+
+        // Add more routes as needed
       ],
     );
   }
@@ -70,6 +80,137 @@ class _WhatsdownAppState extends State<WhatsdownApp> {
               ),
         ),
         routerConfig: routerConfig);
+  }
+}
+
+class IndexScreen extends StatefulWidget {
+  @override
+  State<IndexScreen> createState() => _IndexScreenState();
+}
+
+class _IndexScreenState extends State<IndexScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Container(
+          width: MediaQuery.of(context).size.width * 1,
+          height: MediaQuery.of(context).size.height * 1,
+          color: Colors.white,
+          child: ListView(children: [
+            ...List.generate(exampleListOfUsers.length, (index) {
+              return InkWell(
+                onTap: () {
+                  GoRouter.of(context).push("/message${index + 1}");
+                },
+                child: SizedBox(
+                    height: 70,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: 15),
+                            child: Icon(
+                              exampleListOfUsers[index].icon,
+                            ),
+                          ),
+                          Column(children: [
+                            Text(
+                              exampleListOfUsers[index].name,
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.black),
+                            ),
+                            Text(
+                              "${exampleListOfUsers[index].messageCount} Messages",
+                              style:
+                                  TextStyle(fontSize: 13, color: Colors.black),
+                            )
+                          ]),
+                          SizedBox(
+                            width: 50,
+                          ),
+                          Text("${exampleListOfUsers[index].messageCount}",
+                              style: TextStyle(fontSize: 25))
+                        ])),
+              );
+            })
+          ])),
+    );
+  }
+}
+
+class Messages extends StatefulWidget {
+  final User person;
+
+  Messages({required this.person});
+
+  @override
+  State<Messages> createState() => _MessagesState();
+}
+
+class _MessagesState extends State<Messages> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(widget.person.name, style: TextStyle(fontSize: 25)),
+        ),
+        body: SafeArea(
+          child: Container(
+              width: MediaQuery.of(context).size.width * 1,
+              height: MediaQuery.of(context).size.height * 1,
+              color: Colors.white,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Align(
+                        alignment: Alignment.center,
+                        child: Icon(widget.person.icon, size: 50)),
+                    Text("${widget.person.messageCount} New Messages",
+                        style: TextStyle(fontSize: 20)),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            widget.person.messageCount++;
+                            setState(() {});
+                          },
+                          child: Text("Add Message",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Color.fromARGB(255, 74, 10, 146))),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 2),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            widget.person.messageCount = 0;
+                            setState(() {});
+                          },
+                          child: Text("Clear Messages",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Color.fromARGB(255, 74, 10, 146))),
+                        ),
+                      ),
+                    ),
+                    ...List.generate(widget.person.messageCount, (index) {
+                      return SizedBox(
+                        height: 56,
+                        child: Text("New Message ${index + 1}",
+                            style:
+                                TextStyle(fontSize: 20, color: Colors.black)),
+                      );
+                    })
+                  ])),
+        ));
   }
 }
 
