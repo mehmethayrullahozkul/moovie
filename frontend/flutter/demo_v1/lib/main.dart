@@ -2,28 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:math' as math;
 
-List<User> exampleListOfUsers = [
-  User(name: "hayru", icon: Icons.abc),
-  User(name: "Exa", icon: Icons.abc),
-  User(name: "Example3", icon: Icons.abc),
-  User(name: "Example4", icon: Icons.abc),
-  User(name: "Example5", icon: Icons.abc),
-  User(name: "Example6", icon: Icons.abc),
-  User(name: "Example7", icon: Icons.abc),
-  User(name: "Example8", icon: Icons.abc),
-  User(name: "Example9", icon: Icons.abc),
-  User(name: "Example10", icon: Icons.abc),
-  User(name: "Example11", icon: Icons.abc),
-  User(name: "Example12", icon: Icons.abc),
-  User(name: "Example13", icon: Icons.abc),
-  User(name: "Example14", icon: Icons.abc),
-  User(name: "Example15", icon: Icons.abc),
-  User(name: "Example16", icon: Icons.abc),
-  User(name: "Example20", icon: Icons.abc),
-  User(name: "Example21", icon: Icons.abc),
-  User(name: "Example22", icon: Icons.abc),
-  User(name: "Example23", icon: Icons.abc),
-];
+List<User> exampleListOfUsers = List.generate(30, (index) {
+  return User(name: generateRandomString(), icon: getRandomIcon());
+});
+
+/* List<User> exampleListOfUsers = [
+  User(name: "Example1", icon: Icons.abc);
+  User(name: "Example2", icon: Icons.abc);
+  User(name: "Example3", icon: Icons.abc);
+  User(name: "Example4", icon: Icons.abc);
+  User(name: "Example5", icon: Icons.abc);
+  User(name: "Example6", icon: Icons.abc);
+  User(name: "Example7", icon: Icons.abc);
+]; */
 
 String generateRandomString() {
   int length = math.Random().nextInt(10) + 3;
