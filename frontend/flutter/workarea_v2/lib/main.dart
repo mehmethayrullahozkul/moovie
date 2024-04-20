@@ -4,6 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:workarea_v2/blocs/renk/color_bloc.dart';
 import 'blocs/auth/auth.dart';
 import 'models/myrouter.dart';
+import 'package:workarea_v2/blocs/config/config_bloc.dart';
+import 'package:workarea_v2/blocs/config/config_event.dart';
+import 'package:workarea_v2/blocs/config/config_state.dart';
 
 void main() {
   runApp(const MainApp());
@@ -29,8 +32,11 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ColorBloc(),
-      child: MaterialApp.router(
-        routerConfig: router,
+      child: BlocProvider(
+        create: (context) => ConfigBloc(),
+        child: MaterialApp.router(
+          routerConfig: router,
+        ),
       ),
     );
   }

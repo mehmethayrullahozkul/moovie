@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 abstract class ColorEvent {}
 
 class ColorChangedEvent extends ColorEvent {

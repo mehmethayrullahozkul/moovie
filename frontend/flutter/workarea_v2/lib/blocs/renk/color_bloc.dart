@@ -1,12 +1,11 @@
 import 'dart:math';
-
 import 'package:workarea_v2/blocs/renk/color_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workarea_v2/blocs/renk/color_state.dart';
 
 class ColorBloc extends Bloc<ColorEvent, ColorState> {
   ColorBloc() : super(ColorInitial()) {
-    on<ColorChangedEvent>((event, emit) {
+    on<ColorChangedEvent>((event, emit){
       emit(ColorLoading());
 
       if (event.color == 0) {
