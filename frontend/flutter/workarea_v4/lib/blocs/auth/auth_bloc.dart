@@ -17,9 +17,13 @@ class AuthenticationBloc
     on<AuthenticationDenied>((event, emit) {
       emit(AuthenticationUnauthenticated());
     });
-    on<AuthenticationLoginButtonPressed>((event, emit) {
-      bool auth =
-          AuthenticationService().authenticate(event.username, event.password);
+    on<AuthenticationLoginButtonPressed>((event, emit) async {
+      emit(const AuthenticationLoading());
+
+      // güya database bakiyoruz
+      await Future.delayed(const Duration(seconds: 2));
+      bool auth = AuthenticationService()
+          .authenticate(username: event.username, password: event.password);
       if (auth) {
         emit(const AuthenticationAuthenticated());
       } else {

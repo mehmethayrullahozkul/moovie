@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:workarea_v4/blocs/auth/auth_bloc.dart';
 import 'package:workarea_v4/blocs/auth/auth_state.dart';
 
+/* InheritedNotifier is a widget that allows you to pass a notifier to its descendants.
+  It takes a <E> class which is essentially a notifier
+*/
+// AuthenticationStreamNotifyScopeProvider.of(context)
+//
 class AuthenticationStreamNotifyScopeProvider
     extends InheritedNotifier<AuthenticationStreamNotifier> {
   final AuthenticationBloc authenticationBloc;
@@ -23,6 +28,7 @@ class AuthenticationStreamNotifyScopeProvider
 }
 
 class AuthenticationStreamNotifier extends ChangeNotifier {
+  // STREAM ABONESI
   late final StreamSubscription<dynamic> _authSubscription;
   late AuthenticationState _oldState;
   final AuthenticationBloc authenticationBloc;
@@ -34,7 +40,7 @@ class AuthenticationStreamNotifier extends ChangeNotifier {
   }) : _oldState = authenticationBloc.state {
     _authSubscription = authenticationBloc.stream
         .asBroadcastStream()
-        .listen(_notifyAuthListener);
+        .listen(((dynamic event) => {_notifyAuthListener(event)}));
   }
 
   factory AuthenticationStreamNotifier(
@@ -55,3 +61,23 @@ class AuthenticationStreamNotifier extends ChangeNotifier {
     return authenticationBloc.state is AuthenticationAuthenticated;
   }
 }
+
+// Kullanıcı çıkış yaptı AuthenticatedUnauthenticated
+//  Çıkış yapılmasına rağmen tekrar çıkış isteği gönderildi
+// Loading screen deyken loading screen 
+
+/*
+
+ DATASET SAYILAR -> [1, 2, 3, 5]
+
+ STREAM OLDUĞUNDA -> [1, 2, 3, 5]
+
+ UYGULAMA YAZMAK ISTENIYOR DATASET DEĞİŞTİĞİNDE BUNA TEPKİ GÖSTERSİN
+
+ DEĞİŞMESİ TAKİP EDİLECEK BİLGİ STREAM HALİNE GETİRİLİR
+
+ VE BİR DİNLEYİCİ STREAMI DINLER VE STREAM DEĞİŞTİĞİNDE BİR TAKIM İŞLEMLER YAPAR
+
+ YENI SAYI EKLENDI STREAME -> [1, 2, 3, 5, 7] -> DİNLEYİCİYE BİLDİRİM GİDER
+
+ */

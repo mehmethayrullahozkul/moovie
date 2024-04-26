@@ -34,6 +34,7 @@ class AppRouter {
                 )
               ])
         ],
+        // yeni bir pushlarken veya bir sayfaya giderken bir kontrol yapmak için kullanılır
         redirect: (BuildContext context, state) {
           bool isSignedIn =
               AuthenticationStreamNotifyScopeProvider.of(context).isSignedIn();
@@ -44,9 +45,11 @@ class AppRouter {
             print("redirecting to /");
             return "/";
           } else if (!isSignedIn && !isInLoginScreen) {
+            // kullanıcı çıkış yapmış ama menüye girmeye çalışıyo
             print("redirecting to /login");
             return "/login";
           } else {
+            // hiç bir yönlendirme yapma
             print("no redirect");
             return null;
           }
@@ -57,3 +60,6 @@ class AppRouter {
     return _instance;
   }
 }
+
+// GoRouter.of(context).push("/login");
+

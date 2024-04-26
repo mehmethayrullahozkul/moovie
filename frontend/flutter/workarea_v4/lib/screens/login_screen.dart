@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workarea_v4/blocs/auth/auth_bloc.dart';
 import 'package:workarea_v4/blocs/auth/auth_event.dart';
+import 'package:workarea_v4/blocs/auth/auth_state.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -134,8 +135,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () =>
                         BlocProvider.of<AuthenticationBloc>(context).add(
                             AuthenticationLoginButtonPressed(
-                                username: "hayrullah", password: "123")),
+                                username: _usernameController.text,
+                                password: _passwordController.text)),
                     child: Text('Login')),
+                BlocBuilder<AuthenticationBloc, AuthenticationState>(
+                    builder: (context, state) {
+                  print("Current Auth State is:  $state");
+                  if (state is AuthenticationUnauthenticated) {
+                    return Text('Login failed');
+                  } else if (state is AuthenticationLoading) {
+                    return Text('Login loading');
+                  } else if (state is AuthenticationUninitialized) {
+                    return Text('Login inital state');
+                  } else if (state is AuthenticationAuthenticated) {
+                    return Text('Login successful');
+                  }
+                  return Container();
+                }),
               ],
             ),
           ),

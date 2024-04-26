@@ -1,8 +1,11 @@
 const List<Map<String, String>> users = [
-  {"username": "hayrullah", "password": "123"},
+  {"username": "TAHA TAŞŞAK", "password": "123"},
+  {"username": "TAHA", "password": "123"},
   {"username": "furkan", "password": "123"},
+  {"username": "hayrullah", "password": "123"},
 ];
 
+// singleton class
 class AuthenticationService {
   static final AuthenticationService _instance =
       AuthenticationService._internal();
@@ -13,7 +16,8 @@ class AuthenticationService {
 
   AuthenticationService._internal();
 
-  bool authenticate(String username, String password) {
+  bool authenticate({required String username, required String password}) {
+    print("incoming authentication request: ${username} and ${password}");
     for (var user in users) {
       if (user["username"] == username && user["password"] == password) {
         return true;
