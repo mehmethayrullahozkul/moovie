@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:workarea_v4/blocs/auth/auth_bloc.dart';
-import 'package:workarea_v4/blocs/auth/auth_state.dart';
+import 'package:workarea_v5/blocs/auth/auth_bloc.dart';
+import 'package:workarea_v5/blocs/auth/auth_state.dart';
 
 /* InheritedNotifier is a widget that allows you to pass a notifier to its descendants.
   It takes a <E> class which is essentially a notifier
@@ -21,8 +21,6 @@ class AuthenticationStreamNotifyScopeProvider
             notifier: AuthenticationStreamNotifier(
                 authenticationBloc: authenticationBloc));
 
-  // Parent widgetlardaki en yakin BLABLA classini döndürür, bulamazsa exception atar.
-  // dependOnInheritedWidgetOfExactType<BLABLA>
   static AuthenticationStreamNotifier of(BuildContext context) => context
       .dependOnInheritedWidgetOfExactType<
           AuthenticationStreamNotifyScopeProvider>()!
@@ -83,5 +81,3 @@ class AuthenticationStreamNotifier extends ChangeNotifier {
  YENI SAYI EKLENDI STREAME -> [1, 2, 3, 5, 7] -> DİNLEYİCİYE BİLDİRİM GİDER
 
  */
-
-
