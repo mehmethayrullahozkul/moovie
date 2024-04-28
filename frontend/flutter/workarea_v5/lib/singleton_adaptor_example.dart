@@ -24,6 +24,14 @@ class Car {
   // Burası constructor son alanı burada final variable initialize edilmez
 }
 
-
 // Car.Dondur()
 
+class User {
+  final String username;
+
+  const User({this.username = ""});
+}
+
+class Hayrullah extends User {
+  Hayrullah({required super.username});
+}

@@ -17,6 +17,8 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // state management => bloc
+    // flutter native state management
     return AuthenticationStreamNotifyScopeProvider(
       authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
       child: MaterialApp.router(

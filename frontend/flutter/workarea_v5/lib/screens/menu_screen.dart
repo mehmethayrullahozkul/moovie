@@ -27,6 +27,13 @@ class MenuScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                BlocProvider.of<AuthenticationBloc>(context)
+                    .add(AuthenticationLogoutButtonPressed());
+              },
+              child: const Text("Blabla"),
+            ),
+            ElevatedButton(
+              onPressed: () {
                 GoRouter.of(context).push("/data");
               },
               child: const Text("Data Screen"),

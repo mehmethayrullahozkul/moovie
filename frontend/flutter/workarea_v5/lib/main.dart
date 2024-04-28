@@ -36,8 +36,24 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // BlocBuilder ?
+    /*
+        State değişiminde rebuild
+    */
+
+    // BlocListener
+    /*
+        State değişiminde gerçekleşmesi istenen logici gerçekleştirir
+    */
+
+    /*
+    
+    BlocBuilder : state değiştiğinde rebuild
+    BlocListener: state değiştiğinde logici gerçekleştirir
+     */
     return BlocListener<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
+        // her state değiştiğinde buradaki komutlar uygulanır
         AppRouter().router.refresh();
       },
       child: MaterialApp.router(
