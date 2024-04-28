@@ -1,6 +1,6 @@
 const List<Map<String, String>> users = [
-  {"username": "TAHA TAŞŞAK", "password": "123"},
-  {"username": "TAHA", "password": "123"},
+  {"username": "taha", "password": "123"},
+  {"username": "taha", "password": "123"},
   {"username": "furkan", "password": "123"},
   {"username": "hayrullah", "password": "123"},
 ];
