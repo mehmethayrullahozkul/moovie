@@ -15,3 +15,9 @@ abstract interface class LocalStorage {
 
   void dispose();
 }
+
+/*
+ KULLANICIYA ÖZEL, SİZE DEĞER VERİYORUZ
+ FİLM,
+
+*/

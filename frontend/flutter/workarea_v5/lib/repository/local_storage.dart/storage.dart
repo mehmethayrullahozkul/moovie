@@ -1,3 +1,4 @@
+import 'package:workarea_v5/models/user/user_credentials_realm.dart';
 import 'package:workarea_v5/models/user/user_realm.dart';
 import 'package:workarea_v5/repository/local_storage.dart/local_storage.dart';
 import 'package:realm/realm.dart';
@@ -6,9 +7,10 @@ class Storage implements LocalStorage {
   late final Realm _realm;
 
   Storage._() {
+    /* Realm.deleteRealm('default.realm'); */
     _realm = Realm(
       Configuration.local(
-        [UserRealm.schema],
+        [UserRealm.schema, UserCredentialsRealm.schema],
         schemaVersion: 1,
       ),
     );

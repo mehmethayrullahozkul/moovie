@@ -1,0 +1,92 @@
+POST http://localhost:4000/token
+###
+
+POST http://localhost:4000/validatetoken
+Token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldG95dW5kYTM2MjEiLCJpYXQiOjE2OTgyNDI5ODAsImV4cCI6MTY5ODUwMjE4MH0.QMTBp_wmF3I2F_siTy8LdwgM-loniFLELqYzDxm6nCXJ9S1mm0BWgVDxDlVekM1-qpbaKFOeQ82wFW0dhQUO6LYGI-Y6-sFEp-cWE6mWTYAHDjbKbkqM1hVJH48J7ayeIqxy0R6oClzvaWMnlN4YeEVMLkoA5wDyoX_kV_6aqibqDYUd9XgYfw4z0ubA33ETle643BznsGHZxBHUUNW5G_5XKkHkJUYuMA1_E2j1hTi004vWHPPwxjQ-pP-2gF3sSEVCoibXXfqLRUCXrEAw3aVOADzOStMeChcFfX5EhApWcN0GAr1mKctzvY_M472KktKTutw4LRe_qd9SgkRrNQ
+###
+
+POST http://localhost:4000/request
+User-Agent: 'Windows 10'
+Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imhha2FudXMiLCJpYXQiOjE2ODk0NjI3MjEsImV4cCI6MTY4OTQ2MjczNn0.i62jeXQpBb4-NqW5fopefdftOaSn-EL4-FU46KgTdJr90p6rgD66k4qW-rv0XDd6QrNlZ0b6yvNz5du9g2GRtmrRxAccJ0bbUkAR8zulDhVBXOozmzbyqbPaklrk0dASHHLSmLR72DO-4ggHnc4GmJjXlQpeE_jGZfTaF72Lm9aTPt12PDG7b7BOvHykFZeD3Bx-K20yIuxqQKS5WTzL2OfxiRn_am3K3xoaWWS8ZBKxrccUp6AVetXEiqzV5zXwQn8hLfnUTLjsj3R4XHXZEiTGZwkpn_I4d034NuWK5g55JNIu28bI02bYYxeOGm8chFSim-4wZM5B6ZipqZP66w
+
+###
+POST http://localhost:4000/register
+Content-Type: application/json
+
+{
+    "username": "musa",
+    "mail": "musa@hotmail.com",
+    "password": "musa123"
+}
+
+###
+POST http://localhost:4000/register
+Content-Type: application/json
+
+{
+    "username": "musa",
+    "mail": "musa@hotmail.com",
+    "password": "musa123"
+}
+
+###
+
+GET http://193.57.41.54:8090/getsomerandomshit
+
+
+###
+
+GET comfort.com
+
+###
+
+POST http://localhost:4000/api/login
+Content-Type: application/json
+
+{
+    "email": "hayru",
+    "password": "3131"
+}
+
+###
+
+GET http://localhost:4000/getsomerandomshit
+
+
+###
+
+GET http://193.57.41.54:8090/getsomerandomshit
+###
+
+POST http://localhost:4000/gettoken
+Content-Type: application/json
+
+{
+    "username": "mehmetoyunda3621"
+}
+
+###
+
+POST http://localhost:4000/tokenintegrity
+Content-Type: application/json
+Token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldG95dW5kYTM2MjFhc2Rhc2Rhc2RzYWRhc2Rhc2Q2IiwiaWF0IjoxNjk4MjM4Nzc5LCJleHAiOjE2OTgyMzg3OTR9.KSWgIQiC0IWZ4SLm7nP3ONeV6G4KsAX_fhywasNlf_H2GrNo4NrrxRxadqW43AM0JCG9bNs-8EuPtVOjVoQj8W3ABQk1ugta01KBWmQDOJKIzz8JAVJgtQRA2wIf9vT6IAi31y-fpc89kjwYoIEFyDH6het-dHV-HY6qQGPJC9w7JXCbAkRKnxJNdZVDsRa4wS6-IGtTHkeRcsUJuRMGcibXP_kgsAHT5pZGL5Tb2nnHVkH8P1ULYeo3PFiXec2lbNpkWv3ay1Y9boArPGGOWOPlUUCb9fge939K7pbjMQftUHAmsRJpKxxl90qn3tDKk-PbicFUBT_PPIbX06QS1g
+#{
+#    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldG95dW5kYTM2MjFhc2Rhc2Rhc2RzYWRhc2Rhc2Q2IiwiaWF0IjoxNjk4MjM2MjQwLCJleHAiOjE2OTgyMzYyNTV9.DEC1oul6ftHDgLU-vyQT33sBhkw1riD1XnzbNQ5pY8a0W5_J6c-WGEFDZPsltaHiFG_8G0wss8YissQXg9Pv5U-s1xlQ9nf2GlAABtNH21_t6e2kyJ6fOnVmR5WLI8VFiNfaeUsSxQLjkiDgcDtalYA5UzspYXuQo4wwM2trn8iFNX1Bb7_ZFDzlcMsaDkH3CuBsDUTPMr-UcVV_vwddHDjUMVx28ULRrYS6Ub4NYbqy3DaL842SlgKCmNkzzKUNdjlipV-BBTmR_WmPbpN4tarug6XZmhfH0YViTjCY1Rq1-WSZnFnofjwg3NCG93ItZJrfZTf0caPPAKoKA5iQqg"
+#}
+
+
+###
+
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "identifier": "remzioyunda",
+    "password": "1234"
+}
+
+###
+
+POST http://localhost:3000/deneme
+authentication: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCIsImhhc2giOiJkb250ZXZlbnRyeSJ9.eyJ1c2VybmFtZSI6InJlbXppb3l1bmRhIiwiZnVsbG5hbWUiOiJSZW16aSBLYXJhZGFnIiwiaWF0IjoxNjg5MzM5OTc1fQ.a77D7pQt0oKaWKa8glVaZRr9Xxmfgx_y4g5UXMi7SyF1i1PjwkLjeRue3rEJQ-TDu-bIQSwf6oqsQ-5XpWvvn1RjwMOaRKQzw14OH1YS9zcbq6QCh7wtxVtLa678D7_C-EzqLjfDNOSJEwBl8e5Iji_BlwIOxN2UTA8GYGd3IVy2MXJQXtgvpPHsOzOYW0Y_lc47M1f-k6tzI1sKN9CVsiChtONmwfC_bpe9JFFoL4m01vc0Chv0S6abqBt_brtDIynA9d-0e3Luv9MagpnCOKKIEs_-dTRBO0Y_rBo2i-e-EOscf4fQRj2dAgCAoalPLo1QUlDfnyAyRn4Q5Xh4Bg
+

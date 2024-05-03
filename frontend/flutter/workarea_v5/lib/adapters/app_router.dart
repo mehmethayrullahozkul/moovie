@@ -39,12 +39,10 @@ class AppRouter {
         ],
         // yeni bir pushlarken veya bir sayfaya giderken bir kontrol yapmak için kullanılır
         redirect: (BuildContext context, state) {
+          /* AuthenticationStreamNotifyScopeProvider.of(context).isSignedIn(); */
           print("redirect request sent");
-          bool isSignedIn =
-              /* AuthenticationStreamNotifyScopeProvider.of(context).isSignedIn(); */
-
-              BlocProvider.of<AuthenticationBloc>(context).state
-                  is AuthenticationAuthenticated;
+          bool isSignedIn = BlocProvider.of<AuthenticationBloc>(context).state
+              is AuthenticationAuthenticated;
 
           bool isInLoginScreen = state.fullPath == "/login";
 

@@ -11,12 +11,10 @@ class UserRealm extends _UserRealm
     with RealmEntity, RealmObjectBase, RealmObject {
   UserRealm(
     String username,
-    String passwordHash,
     String emailAddress,
     bool isValid,
   ) {
     RealmObjectBase.set(this, 'username', username);
-    RealmObjectBase.set(this, 'passwordHash', passwordHash);
     RealmObjectBase.set(this, 'emailAddress', emailAddress);
     RealmObjectBase.set(this, 'isValid', isValid);
   }
@@ -28,13 +26,6 @@ class UserRealm extends _UserRealm
       RealmObjectBase.get<String>(this, 'username') as String;
   @override
   set username(String value) => RealmObjectBase.set(this, 'username', value);
-
-  @override
-  String get passwordHash =>
-      RealmObjectBase.get<String>(this, 'passwordHash') as String;
-  @override
-  set passwordHash(String value) =>
-      RealmObjectBase.set(this, 'passwordHash', value);
 
   @override
   String get emailAddress =>
@@ -58,7 +49,6 @@ class UserRealm extends _UserRealm
   EJsonValue toEJson() {
     return <String, dynamic>{
       'username': username.toEJson(),
-      'passwordHash': passwordHash.toEJson(),
       'emailAddress': emailAddress.toEJson(),
       'isValid': isValid.toEJson(),
     };
@@ -69,13 +59,11 @@ class UserRealm extends _UserRealm
     return switch (ejson) {
       {
         'username': EJsonValue username,
-        'passwordHash': EJsonValue passwordHash,
         'emailAddress': EJsonValue emailAddress,
         'isValid': EJsonValue isValid,
       } =>
         UserRealm(
           fromEJson(username),
-          fromEJson(passwordHash),
           fromEJson(emailAddress),
           fromEJson(isValid),
         ),
@@ -88,7 +76,6 @@ class UserRealm extends _UserRealm
     register(_toEJson, _fromEJson);
     return SchemaObject(ObjectType.realmObject, UserRealm, 'UserRealm', [
       SchemaProperty('username', RealmPropertyType.string, primaryKey: true),
-      SchemaProperty('passwordHash', RealmPropertyType.string),
       SchemaProperty('emailAddress', RealmPropertyType.string),
       SchemaProperty('isValid', RealmPropertyType.bool),
     ]);

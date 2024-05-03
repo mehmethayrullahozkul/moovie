@@ -7,7 +7,7 @@ part 'user_realm.realm.dart';
 class _UserRealm {
   @PrimaryKey()
   late String username;
-  late String passwordHash;
   late String emailAddress;
   late bool isValid;
 }
+// dart run realm generate
