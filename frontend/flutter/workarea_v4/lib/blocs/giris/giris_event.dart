@@ -1,6 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 sealed class AuthenticationEvent extends Equatable {
   const AuthenticationEvent();
@@ -9,9 +7,11 @@ sealed class AuthenticationEvent extends Equatable {
   List<Object> get props => [];
 }
 
-final class AuthenticationStarted extends AuthenticationEvent {
-  const AuthenticationStarted();
-}
+final class AuthenticationStart extends AuthenticationEvent {}
+
+final class AuthenticationApproved extends AuthenticationEvent {}
+
+final class AuthenticationDenied extends AuthenticationEvent {}
 
 final class AuthenticationLoginButtonPressed extends AuthenticationEvent {
   final String username;
@@ -21,6 +21,4 @@ final class AuthenticationLoginButtonPressed extends AuthenticationEvent {
       {required this.username, required this.password});
 }
 
-final class AuthenticationLogoutButtonPressed extends AuthenticationEvent {
-  const AuthenticationLogoutButtonPressed();
-}
+final class AuthenticationLogoutButtonPressed extends AuthenticationEvent {}
