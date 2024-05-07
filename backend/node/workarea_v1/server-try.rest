@@ -1,0 +1,7 @@
+GET http://localhost:3000/getrandomwordpairs
+Content-Type: application/json
+
+{
+    "count": 20
+}
+###

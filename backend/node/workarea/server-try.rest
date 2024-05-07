@@ -1,4 +1,7 @@
-POST http://localhost:4000/token
+GET http://193.57.41.54:8080
+###
+
+GET http://erhukuk.com.tr:8080
 ###
 
 POST http://localhost:4000/validatetoken

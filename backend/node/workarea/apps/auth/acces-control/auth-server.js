@@ -302,8 +302,3 @@ app.post('/register', async (req, res) => {
 //
 
 
-app.listen(port, () => 
-    {
-        console.log(`Auth server is running on port ${port}`);
-    }
-);
