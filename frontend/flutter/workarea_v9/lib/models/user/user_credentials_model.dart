@@ -20,4 +20,12 @@ final class UserCredentialsModel {
       refreshToken: refreshToken,
     );
   }
+
+  factory UserCredentialsModel.fromJSON(Map<String, dynamic> json) {
+    return UserCredentialsModel._(
+      username: json['username'],
+      accessToken: json['accessToken'],
+      refreshToken: json['refreshToken'],
+    );
+  }
 }

@@ -5,3 +5,23 @@ Content-Type: application/json
     "count": 20
 }
 ###
+
+POST http://localhost:3040/api/login
+Content-Type: application/json
+
+{
+    "username": "mehmet",
+    "password": "123456"
+}
+###
+
+
+GET http://localhost:3040/api/secret-data
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE4NTM4MiwiZXhwIjoxNzE1MTg1NDEyfQ.HWvp8qM5EXXVLuUbJwM1-2ASDYYsXebkCy9unvQN58zGuBholhkaWmW0I3VzCrth80G_QSDj9w4rEJOKRspmCD6Qs1uHxBybGmeTGcZWwYhiNrK3V6RBxG7wII2aBa-O-JpTknRqa4ytK8zZMRSSFItkO3yQcMAnUXZbMSsljHLblGoitv-GVX9oH31DedS5GewSphhf8uQBv-GwEK1CLvBvXtHU8pHnKhW3EqfLfS1ENiqk57wyzfPwsg1K22gbuyTeKm7KzN8YH-vpti6bL2vrm_Uv6G25pDRmp0GtLvhdA3huh7uqHsRGEzkkOMlAlWo0U1OTdr4XY_gyk-lK8w",
+    "username": "mehmet"
+}
+###
+

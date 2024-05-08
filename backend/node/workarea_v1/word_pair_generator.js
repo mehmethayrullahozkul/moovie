@@ -51,11 +51,6 @@ class WordPair
     }
 }
 
-async function test()
-{
-    const wordPairGenerator = new WordPair('words.txt');
-    console.log(wordPairGenerator.getRandomWordPairs(5));
-}
 
 const wordPairGenerator = new WordPair('words.txt');
 module.exports = wordPairGenerator;
