@@ -19,10 +19,9 @@ class DataRepository {
   Future<List<Map<String, String>>> getRandomWordPairs(
       {required int wordCount}) async {
     late final Response response;
-
     try {
-      response = await _remoteStorage
-          .get(API.baseUrl + getRandomWordPairUrl, data: {"count": wordCount});
+      response = await _remoteStorage.get(API.baseUrl + getRandomWordPairUrl,
+          data: {"count": wordCount, "language": "en", "language2": "es"});
       if (response.statusCode == 200) {
         List<dynamic> wordPairMaps = response.data["wordPairs"];
         List<Map<String, String>> wordPairs = [];

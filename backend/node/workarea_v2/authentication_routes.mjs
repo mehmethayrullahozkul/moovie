@@ -1,5 +1,6 @@
 
 import validateOpts from './validate_options.mjs';
+import preParseToken from './authentication_hooks.mjs';
 /* const bodyJsonSchema = {
   type: 'object',
   required: ['username', 'password'],
@@ -85,13 +86,25 @@ const opts = {
   }
 }
 
+const authentication = 
+{
+  method: 'POST',
+  url: '/api/login',
+  opts,
+  handler: function (request, reply) {
+    reply.send({status: true});
+  }
+}
 
-async function authentication (fastify, options) {
+export default authentication;
+
+
+/* async function authentication (fastify, options) {
     fastify.post('/api/login', opts, async (request, reply) => {
       return { hello: 'world' }
     })
-  }
+}
 
   
 
-  export default authentication;
+  export default authentication; */

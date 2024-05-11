@@ -2,11 +2,11 @@ GET http://193.57.41.54:3040/getrandomwordpairs
 Content-Type: application/json
 
 {
-    "count": 20
+    "count": 5
 }
 ###
 
-POST http://localhost:3040/api/login
+POST http://193.57.41.54:3040/api/login
 Content-Type: application/json
 
 {
@@ -16,12 +16,12 @@ Content-Type: application/json
 ###
 
 
-GET http://localhost:3040/api/secret-data
+GET http://193.57.41.54:3040/api/secret-data
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE4NTM4MiwiZXhwIjoxNzE1MTg1NDEyfQ.HWvp8qM5EXXVLuUbJwM1-2ASDYYsXebkCy9unvQN58zGuBholhkaWmW0I3VzCrth80G_QSDj9w4rEJOKRspmCD6Qs1uHxBybGmeTGcZWwYhiNrK3V6RBxG7wII2aBa-O-JpTknRqa4ytK8zZMRSSFItkO3yQcMAnUXZbMSsljHLblGoitv-GVX9oH31DedS5GewSphhf8uQBv-GwEK1CLvBvXtHU8pHnKhW3EqfLfS1ENiqk57wyzfPwsg1K22gbuyTeKm7KzN8YH-vpti6bL2vrm_Uv6G25pDRmp0GtLvhdA3huh7uqHsRGEzkkOMlAlWo0U1OTdr4XY_gyk-lK8w",
-    "username": "mehmet"
+    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ",
+        "username": "mehmet"
 }
 ###
 

@@ -8,6 +8,8 @@ Content-Type: application/json
 ###
 
 POST http://localhost:3000/api/login
+Token: Hayrunun Tokeni
+Blabla: Blabla
 Content-Type: application/json
 
 {
@@ -17,3 +19,13 @@ Content-Type: application/json
 }
 
 ###
+
+GET http://localhost:3000/api/home
+Blabla: Blabla
+Content-Type: application/json
+
+{
+    "username": "adme13231qwein",
+    "password": "admqeqweqin.",
+    "language": "TR-tr"
+}

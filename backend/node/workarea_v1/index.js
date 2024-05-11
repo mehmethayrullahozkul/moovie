@@ -38,6 +38,14 @@ app.use((err, req, res, next) => {
 });
 
 
+app.get('/', (req, res) => {
+    res.status(200).send({status: true, message: 'Server is running.'});
+});
+
+app.get('/banana', async (req, res) => {
+    res.status(200).send({status: true, message: 'Banana is eaten alive.'});
+});
+
 app.get('/getrandomwordpairs', async (req, res) => {
 
     const count = req.body['count'];
