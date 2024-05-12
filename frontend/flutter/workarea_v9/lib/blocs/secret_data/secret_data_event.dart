@@ -10,3 +10,7 @@ sealed class SecretDataEvent extends Equatable {
 final class SecretDataRequested extends SecretDataEvent {
   const SecretDataRequested();
 }
+
+final class SecretDataInitial extends SecretDataEvent {
+  const SecretDataInitial();
+}

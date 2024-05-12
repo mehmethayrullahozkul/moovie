@@ -133,7 +133,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      // TODO: Implement the onPressed method
+                      BlocProvider.of<AuthenticationBloc>(context).add(
+                          AuthenticationLoginButtonPressed(
+                              username: _usernameController.text,
+                              password: _passwordController.text));
+                      setState(() {});
                     },
                     child: Text('Login')),
                 BlocBuilder<AuthenticationBloc, AuthenticationState>(

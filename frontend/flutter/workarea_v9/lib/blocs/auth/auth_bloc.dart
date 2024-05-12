@@ -43,6 +43,7 @@ class AuthenticationBloc
     });
     on<AuthenticationLogoutButtonPressed>((event, emit) {
       emit(const AuthenticationUnauthenticated());
+      AuthenticationService().signOut();
     });
   }
 }

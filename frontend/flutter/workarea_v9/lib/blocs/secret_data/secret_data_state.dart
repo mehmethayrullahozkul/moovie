@@ -12,6 +12,6 @@ final class SecretDataUninitialized extends SecretDataState {
 }
 
 final class SecretDataLoaded extends SecretDataState {
-  final String secretData;
+  final String? secretData;
   const SecretDataLoaded({required this.secretData});
 }
