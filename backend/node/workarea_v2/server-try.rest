@@ -1,0 +1,31 @@
+GET http://193.57.41.54:3040/getrandomwordpairs
+Content-Type: application/json
+
+{
+    "count": 20
+}
+
+###
+
+POST http://localhost:3000/api/login
+Token: Hayrunun Tokeni
+Blabla: Blabla
+Content-Type: application/json
+
+{
+    "username": "adme13231qwein",
+    "password": "admqeqweqin.",
+    "language": "TR-tr"
+}
+
+###
+
+GET http://localhost:3000/api/home
+Blabla: Blabla
+Content-Type: application/json
+
+{
+    "username": "adme13231qwein",
+    "password": "admqeqweqin.",
+    "language": "TR-tr"
+}

@@ -1,0 +1,186 @@
+Apple-Elma
+Pencil-Kalem
+Car-Araba
+House-Ev
+Book-Kitap
+Table-Masa
+Chair-Sandalye
+Dog-Kopek
+Cat-Kedi
+Tree-Agac
+Sun-Gunes
+Moon-Ay
+Water-Su
+Fire-Ates
+Earth-Dunya
+Sky-Gokyuzu
+Flower-Cicek
+Mountain-Dag
+River-Nehir
+Ocean-Okyanus
+Fish-Balık
+Bird-Kus
+Horse-At
+Cow-İnek
+Sheep-Koyun
+Road-Yol
+Bridge-Kopru
+School-Okul
+Hospital-Hastane
+Restaurant-Restoran
+Airport-Havalimanı
+Train-Tren
+Bus-Otobus
+Bicycle-Bisiklet
+Computer-Bilgisayar
+Phone-Telefon
+Television-Televizyon
+Music-Muzik
+Movie-Film
+Sport-Spor
+Game-Oyun
+Love-Ask
+Friend-Arkadas
+Family-Aile
+Happiness-Mutluluk
+Sadness-uzuntu
+Hope-Umud
+Dream-Ruya
+Success-Basarı
+Failure-Basarısızlık
+Work-İs
+Money-Para
+Time-Zaman
+Day-Gun
+Night-Gece
+Morning-Sabah
+Evening-Aksam
+Week-Hafta
+Month-Ay
+Year-Yıl
+Color-Renk
+Red-Kırmızı
+Blue-Mavi
+Green-Yesil
+Yellow-Sarı
+Orange-Turuncu
+Purple-Mor
+White-Beyaz
+Black-Siyah
+Brown-Kahverengi
+Pink-Pembe
+Gray-Gri
+Food-Yiyecek
+Fruit-Meyve
+Vegetable-Sebze
+Meat-Et
+Chicken-Tavuk
+Fish-Balık
+Rice-Pirinc
+Bread-Ekmek
+Cheese-Peynir
+Egg-Yumurta
+Milk-Sut
+Coffee-Kahve
+Tea-Cay
+Water-Su
+Juice-Meyve suyu
+Wine-sarap
+Beer-Bira
+Dessert-Tatlı
+Cake-Pasta
+Ice cream-Dondurma
+Chocolate-Cikolata
+Candy-seker
+Cookie-Kurabiye
+Snack-Atıstırmalık
+Breakfast-Kahvaltı
+Lunch-ogle yemegi
+Dinner-Aksam yemegi
+Soup-Corba
+Salad-Salata
+Sandwich-Sandvic
+Pizza-Pizza
+Burger-Burger
+Pasta-Makarna
+Rice-Pilav
+Noodle-Eriste
+Curry-Kori
+Sushi-Sushi
+Taco-Taco
+Burrito-Burrito
+Quesadilla-Quesadilla
+Enchilada-Enchilada
+Fajita-Fajita
+Guacamole-Guacamole
+Hummus-Humus
+Falafel-Falafel
+Shawarma-Doner
+Kebab-Kebap
+Gyro-Gyro
+Stir fry-Wok
+Sauté-Kavurma
+Grill-Izgara
+Roast-Fırın
+Bake-Pisirme
+Boil-Kaynatma
+Steam-Buharda pisirme
+Fry-Kızartma
+Soup-Corba
+Stew-Etimek
+Sauce-Sos
+Gravy-Sos
+Dressing-Sos
+Marinade-Marinat
+Condiment-Baharat
+Spice-Baharat
+Herb-Ot
+Salt-Tuz
+Pepper-Biber
+Sugar-seker
+Honey-Bal
+Olive oil-Zeytinyagı
+Vegetable oil-Bitkisel yag
+Butter-Tereyagı
+Cheese-Peynir
+Yogurt-Yogurt
+Cream-Krema
+Mayonnaise-Mayonez
+Mustard-Hardal
+Ketchup-Ketcap
+Pickle-Tursu
+Jam-Recel
+Jelly-Jole
+Marmalade-Marmelat
+Peanut butter-Fıstık ezmesi
+Almond butter-Badem ezmesi
+Walnut butter-Ceviz ezmesi
+Hazelnut spread-Fındık kreması
+Chocolate spread-Cikolata kreması
+Marshmallow spread-Marshmallow kreması
+Cereal-Kahvaltılık gevrek
+Oatmeal-Yulaf ezmesi
+Pancake-Pankek
+Waffle-Waffle
+French toast-Fransız tostu
+Crepe-Krep
+Croissant-Kruvasan
+Bagel-Bagel
+Muffin-Muffin
+Donut-Donut
+Danish-Danimarka
+Scone-Scone
+Bread-Ekmek
+Roll-Rulo
+Baguette-Baget
+Loaf-Somun
+Slice-Dilim
+Crust-Kabuk
+Crumb-Kırıntı
+Cookie-Kurabiye
+Biscuit-Biskuvi
+Pastry-Hamur isi
+Pie-Turta
+Tart-Tart
+Cake-Kek
+Cupcake-BlablaKek
