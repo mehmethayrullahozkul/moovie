@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "workarea_v9",
+            "request": "launch",
+            "type": "dart",
+            "program": "C:\\src\\flutter\\moovie\\frontend\\flutter\\workarea_v9\\lib\\Screens\\main.dart"
+        },
+        {
+            "name": "workarea_v9 (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "lib/main.dart" // Burada ana dart dosyasının yolunu belirtin
+        },
+        {
+            "name": "workarea_v9 (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/main.dart" // Burada ana dart dosyasının yolunu belirtin
+        }
+    ]
+}

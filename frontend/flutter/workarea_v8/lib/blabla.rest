@@ -1,0 +1,8 @@
+###
+GET http://193.57.41.54:3040/getrandomwordpairs
+Content-Type: application/json
+
+{ 
+"count":15
+}
+###
