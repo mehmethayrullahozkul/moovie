@@ -67,7 +67,7 @@ class GTUMoovieApp extends StatelessWidget {
       child: MaterialApp.router(
           theme: ThemeData(
             fontFamily: 'Nunito-Sans',
-            primaryColor: Colors.black,
+            primaryColor: Colors.red,
           ),
           debugShowCheckedModeBanner: false,
           routerConfig: router),
