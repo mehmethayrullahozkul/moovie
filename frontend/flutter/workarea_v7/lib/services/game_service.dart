@@ -56,6 +56,7 @@ class GameService {
   }
 
   void _determineWinner() async {
+    print("checking winner for ${player1.playType} and ${player2.playType}");
     gameState.value = GameState.playing;
     await Future.delayed(const Duration(seconds: 2), () {});
     winner.value = NoWinner();
@@ -74,7 +75,7 @@ class GameService {
       } else {
         player2.incrementScore();
         winner.value = player2;
-        gameResult.value = GameResult.draw;
+        gameResult.value = GameResult.lose;
       }
     } else if (player1.playType == PlayType.paper) {
       if (player2.playType == PlayType.rock) {
@@ -84,7 +85,7 @@ class GameService {
       } else {
         player2.incrementScore();
         winner.value = player2;
-        gameResult.value = GameResult.win;
+        gameResult.value = GameResult.lose;
       }
     } else if (player1.playType == PlayType.scissors) {
       if (player2.playType == PlayType.paper) {

@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 
 module.exports = {
     isString: function(str) {
@@ -24,5 +26,32 @@ module.exports = {
         else {
             return true;
         }
+    },
+    uid:  function(str)  {
+        const salt = 'RANDOMTODOSALT';
+        const hmac = crypto.createHmac('md5', '');
+        hmac.update(str + salt);
+        const uuid16Byte =  hmac.digest('base64').slice(0, 22);
+        const uuid8Byte = uuid16Byte.slice(0, 8);
+        return this.byteArrayToUrlToDecimal(this.base64urlToByteArray(uuid8Byte));
+    },
+    base64urlToByteArray: function(base64String) {
+        
+        let binaryString = atob(base64String);
+        // Convert binary string to byte array
+        let byteArray = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) {
+            byteArray[i] = binaryString.charCodeAt(i);
+        }
+        return byteArray;
+    },
+    byteArrayToUrlToDecimal: function (byteArray) {
+        // Convert byte array to unsigned long string
+        let result = '';
+        for (let i = 0; i < byteArray.length; i++) {
+            result += byteArray[i].toString().padStart(3, '0'); // Ensure each byte has at least 3 digits
+        }
+        return result;
     }
+
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:workarea_v7/blocs/game_state/game_state_bloc.dart';
 import 'package:workarea_v7/models/constants.dart';
 import 'package:workarea_v7/screens/action_bar.dart';
@@ -11,12 +13,70 @@ class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
 }
 
-class _GameScreenState extends State<GameScreen> {
-  final Map<GameResult, String> mappingResult = {
-    GameResult.draw: "Draw!",
-    GameResult.win: "Win!",
-    GameResult.lose: "Lose!",
+class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
+  final Map<PlayType, IconData> mappingIcon = {
+    PlayType.paper: FontAwesomeIcons.solidHand,
+    PlayType.rock: FontAwesomeIcons.solidHandBackFist,
+    PlayType.scissors: FontAwesomeIcons.solidHandScissors,
   };
+
+  late final AnimationController _playerAnimationController;
+  late final AnimationController _opponentAnimationController;
+
+  late final Animation<Offset> _upDownAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _playerAnimationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 2000),
+    );
+    _opponentAnimationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 2000),
+    );
+
+    _upDownAnimation = TweenSequence<Offset>(<TweenSequenceItem<Offset>>[
+      TweenSequenceItem<Offset>(
+          tween: Tween(
+            begin: Offset(0, 0),
+            end: Offset(0, 1),
+          ),
+          weight: 12),
+      TweenSequenceItem<Offset>(
+          tween: Tween(
+            begin: Offset(0, 1),
+            end: Offset(0, 0),
+          ),
+          weight: 12),
+      TweenSequenceItem<Offset>(
+          tween: Tween(
+            begin: Offset(0, 0),
+            end: Offset(0, 1),
+          ),
+          weight: 12),
+      TweenSequenceItem<Offset>(
+          tween: Tween(
+            begin: Offset(0, 1),
+            end: Offset(0, 0),
+          ),
+          weight: 12),
+      TweenSequenceItem<Offset>(
+          tween: Tween(
+            begin: Offset(0, 0),
+            end: Offset(0, 1),
+          ),
+          weight: 12),
+      TweenSequenceItem<Offset>(
+          tween: Tween(
+            begin: Offset(0, 1),
+            end: Offset(0, 0),
+          ),
+          weight: 12),
+    ]).animate(CurvedAnimation(
+        parent: _playerAnimationController, curve: Curves.linear));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +114,9 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                   ),
                   ActionBar(
-                    onChoose: (actionType) {
+                    onChoose: (playType) {
                       BlocProvider.of<GameStateBloc>(context).add(PlayGame(
-                          player1PlayType: PlayType.paper,
+                          player1PlayType: playType,
                           player2PlayType: PlayType.paper));
                     },
                     disabled: false,
@@ -116,13 +176,6 @@ class _GameScreenState extends State<GameScreen> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     );
-                          /* Text(
-                            mappingResult[winner.gameResult] ?? '',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ); */
                         }),
                       ],
                     ),
@@ -130,6 +183,8 @@ class _GameScreenState extends State<GameScreen> {
                   ElevatedButton(
                     onPressed: () {
                       BlocProvider.of<GameStateBloc>(context).add(ResetRound());
+                      _playerAnimationController.reset();
+                      _opponentAnimationController.reset();
                     },
                     child: Text(
                       'Play Again',
@@ -151,6 +206,9 @@ class _GameScreenState extends State<GameScreen> {
           }
 
           if (state is GameStatePlaying) {
+            print("Game State: Playing");
+            _playerAnimationController.forward();
+            _opponentAnimationController.forward();
             return Container(
               margin: const EdgeInsets.all(48),
               width: double.infinity,
@@ -170,20 +228,67 @@ class _GameScreenState extends State<GameScreen> {
                           ),
                         ),
                         SizedBox(height: 30),
-                        Text(
-                          'Choose your weapon',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'You',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  AnimatedBuilder(
+                                    animation: _playerAnimationController,
+                                    builder: (context, value) =>
+                                        SlideTransition(
+                                      position: _upDownAnimation,
+                                      child: Icon(
+                                        mappingIcon[state.player1.playType],
+                                        size: 64,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'Opponent',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  AnimatedBuilder(
+                                    animation: _opponentAnimationController,
+                                    builder: (context, value) =>
+                                        SlideTransition(
+                                      position: _upDownAnimation,
+                                      child: Icon(
+                                        mappingIcon[state.player2.playType],
+                                        size: 64,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
                   ActionBar(
-                    onChoose: (actionType) {
+                    onChoose: (playType) {
                       context.read<GameStateBloc>().add(PlayGame(
-                          player1PlayType: actionType,
+                          player1PlayType: playType,
                           player2PlayType: PlayType.paper));
                     },
                     disabled: true,
