@@ -17,8 +17,8 @@ POST {{host}}/api/login
 Content-Type: application/json
 
 {
-    "username": "batu",
-    "password": "123"
+    "username": "hayru",
+    "password": "123456"
 }
 
 
@@ -36,18 +36,18 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
 
 {
-    "username": "batu",
-    "password": "123",
-    "mail": "batu@gmail.com",
-    "secret": "batu secret"
+    "username": "hayru",
+    "password": "123456",
+    "mail": "batasdsadsadu@gmail.com",
+    "secret": "hayrunun evi"
 }
 
 
 # GET USER
 ###
-GET {{host}}/api/users/mehmet
+GET {{host}}/api/users/hayru
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
+Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhheXJ1IiwiaWF0IjoxNzE1Nzk1OTQzLCJleHAiOjE3MTU3OTU5NzN9.jPlqQ2f23WXyAHC4FgZ3Pt3aQwCoKZrBKvAIhQyUjpttrWx35CnWSTaJl9H3MyF363ZweNvM348XohwrtLXeXB1hXZRN4otHWMly4t5oqkSsg6Ac3Ug64hnXY94zJs549vm89DfkUvbGthgPnRTAzJUQioKOyYzoC_rxCowxnP130R-D_5_gdDL-uchHq3HZTImhDrMtCG4pOGs9K9g26LD5ks3Vd81JoJ07FA5xv5g_LBCW4Wp7d6THfXCNFgbnjwCAnUElofHSw0T7Km4Q7ew0UIdpe2mMZnJMm3JyvMci-NTnbYdL5JG_7R0GqcMxTgT4bfbSmCG8JVd3nFlINg
 
 
 
@@ -77,7 +77,7 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
 
 {
-    "todo": "mehmet's todo 4"
+    "todo": "mehmet's second todo"
 }
 
 
@@ -90,25 +90,26 @@ Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIs
 
 # GET THE TODO
 ###
-GET {{host}}/api/users/mehmet/todos/108063095001056193
+GET {{host}}/api/users/mehmet/todos/227196033025191163
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
 
 
 # UPDATE TODO
 ###
-POST {{host}}/api/users/mehmet/todos/047124051057053034
+POST {{host}}/api/users/mehmet/todos/227196033025191163
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
     
 {
-    "todo": "mehmets new todo is changed"
+    "todo": "mehmets second is the new third todo"
 }
+
 
 
 # DELETE TODO
 ###
-DELETE {{host}}/api/users/mehmet/todos/150230173010021249
+DELETE {{host}}/api/users/mehmet/todos/186079135223232159
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
 

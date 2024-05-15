@@ -139,11 +139,6 @@ class UserRepository {
           list: todoList,
         };
         users.update(result);
-
-        const user2 = this.getUser(user.username);
-     
-
-        const after = users.by('username', user.username);
   
         return true;
       }
