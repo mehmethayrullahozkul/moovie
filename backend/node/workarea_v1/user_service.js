@@ -6,10 +6,10 @@ class UserRepository {
 
 
   constructor() {
-    this.addUserAsObject(new User('mehmet', 'mehmet@gmail.com', '123456', 'mehmet has something to hide', 0, []));
-    this.addUserAsObject(new User('ali', 'ali@gmail.com', '123456', 'ali has something to hide', 0, []));
-    this.addUserAsObject(new User('furkan', 'furkan@gmail.com', '123456', 'furkan has something to hide', 0, []));
-    this.addUserAsObject(new User('taha', 'taha@gmail.com', '123456', 'taha has something to hide', 0, []));
+    this.addUserAsObject(new User('mehmet', '123456', 'mehmet@gmail.com', 'mehmet has something to hide', 0, []));
+    this.addUserAsObject(new User('ali', '123456', 'ali@gmail.com', 'ali has something to hide', 0, []));
+    this.addUserAsObject(new User('furkan','123456',  'furkan@gmail.com', 'furkan has something to hide', 0, []));
+    this.addUserAsObject(new User('taha', '123456', 'taha@gmail.com', 'taha has something to hide', 0, []));
   }
 
   addUserAsObject(user) {
@@ -85,10 +85,10 @@ class UserRepository {
     }
     let todoList = [];
     for (const element of user.todo.list) {
-      const todo = new TODO(element.id, element.data);
+      const todo = new TODO(element.id, element.data, element.date);
       todoList.push(todo);
     }
-    return new User(username, user.mail, user.password, user.secret, user.todo.count, todoList);
+    return new User(username, user.password, user.mail, user.secret, user.todo.count, todoList);
   }
 
   hasUser(username) {
@@ -118,8 +118,6 @@ class UserRepository {
     {
       if(this.hasUser(user.username))
       {
-    
-        const user1 = this.getUser(user.username);
       
         const result = users.by('username', user.username);
         result.password = user.password;
@@ -130,7 +128,8 @@ class UserRepository {
         for (const element of user.todoList) {
           const todo = {
             id: element.id,
-            data: element.data
+            data: element.data,
+            date: element.date
           };
           todoList.push(todo);
         }
@@ -145,16 +144,7 @@ class UserRepository {
      
 
         const after = users.by('username', user.username);
-   
-        /* const result = users.findAndUpdate({username: user.username}, function(obj) {
-          obj.password = user.password;
-          obj.mail = user.mail;
-          obj.secretdata = user.secretData;
-          obj.todo = {
-            count: user.todoCount,
-            list: user.todoList,
-          };
-        }); */
+  
         return true;
       }
       return false;
@@ -262,7 +252,7 @@ class User {
   }
 
 
-  constructor(username, mail, password, secret, todoCount, todoList) {
+  constructor(username, password, mail, secret, todoCount, todoList) {
     this.username = username;
     this.mail = mail;
     this.password = password;

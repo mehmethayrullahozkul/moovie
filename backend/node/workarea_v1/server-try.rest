@@ -1,12 +1,17 @@
 
-@host = http://localhost:3040
+@host = https://ozkuls.com
 
+
+# GET RANDOM WORD PAIRS
+###
 GET {{host}}/getrandomwordpairs
 Content-Type: application/json
 
 {
     "count": 5
 }
+
+# LOGIN
 ###
 POST {{host}}/api/login
 Content-Type: application/json
@@ -15,6 +20,13 @@ Content-Type: application/json
     "username": "batu",
     "password": "123"
 }
+
+
+# TOKEN REFRESH
+###
+POST {{host}}/api/token/refresh
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
 
 
 # ADD NEW USER
@@ -65,7 +77,7 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
 
 {
-    "todo": "mehmet's todo 2"
+    "todo": "mehmet's todo 4"
 }
 
 
@@ -78,14 +90,14 @@ Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIs
 
 # GET THE TODO
 ###
-GET {{host}}/api/users/mehmet/todos/056160042219240154
+GET {{host}}/api/users/mehmet/todos/108063095001056193
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
 
 
 # UPDATE TODO
 ###
-POST {{host}}/api/users/mehmet/todos/147243030112008002
+POST {{host}}/api/users/mehmet/todos/047124051057053034
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
     
@@ -96,6 +108,7 @@ Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIs
 
 # DELETE TODO
 ###
-DELETE {{host}}/api/users/mehmet/todos/220251072251052124
+DELETE {{host}}/api/users/mehmet/todos/150230173010021249
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
+

@@ -45,8 +45,6 @@ async function accessTokenValidation(req, res, next) {
         
     }
 
-
-
     q = await tokenManagement.verifyToken(token);
 
     if(!q.status) {
@@ -98,14 +96,49 @@ app.use((err, req, res, next) => {
 });
 
 
+
+
+
+
 app.get('/', (req, res) => {
     res.status(200).send({status: true, message: 'Server is running.'});
 });
 
+
+
+// Server Status
 app.get('/api/status', async (req, res) => {
-    res.status(200).send({status: true, server: 'good', message: 'Banana is eaten alive.'});
+    res.status(200).send({status: true, server: 'running', message: 'Banana is eaten alive.'});
 });
 
+
+app.post('/api/token/refresh', async (req, res) => {
+    
+        const token = req.headers['authorization'];
+    
+        const username = parseAccessTokenUsername(token);
+    
+        if(username == null)
+        {
+            res.status(400).send({status: false, error: 'Username is missing.'});
+            return;
+        }
+    
+        const newToken = await tokenManagement.generateAccessToken(username);
+    
+        if(!newToken.status)
+        {
+            res.status(500).send({status: false, error: 'Service not working.' + newToken.error});
+            return;
+        }
+        else
+        {
+            res.status(200).send({status: true, accessToken: newToken.result['token'], username: username});
+        }
+});
+
+
+// Get Random Word Pairs
 app.get('/getrandomwordpairs', async (req, res) => {
 
     const count = req.body['count'];
@@ -165,7 +198,7 @@ app.get('/getrandomwordpairs', async (req, res) => {
 
 
 
-
+// Login User
 app.post('/api/login', async (req, res) => {
     const {username, password} = req.body;
 
@@ -360,7 +393,7 @@ app.post('/api/users/:username/todos', async (req, res) => {
     const after = userRepository.getUserAsObject(username);
     
 
-    res.status(200).send({status: true, message: 'Todo add success.'}); 
+    res.status(200).send({status: true, message: 'Todo add success.', 'todo-id': todoID, 'todo': todo, 'date-created': todoDate}); 
 
 });
 
@@ -434,7 +467,7 @@ app.get('/api/users/:username/todos/:todoID', async (req, res) => {
     }
 
     console.log(result);
-    res.status(200).send({status: true, todo: result.data});
+    res.status(200).send({status: true, todo: result.data, 'date-created': result.date, 'todo-id': result.id});
 
 });
 
@@ -480,7 +513,7 @@ app.delete('/api/users/:username/todos/:todoID', async (req, res) => {
 
         userRepository.updateUser(user);
 
-        res.status(200).send({status: true, message: 'To Do deleted.'});
+        res.status(200).send({status: true, message: 'To Do deleted.', 'todo-id': todoID, 'todo': result.data, 'date-created': result.date});
 });
 
 // Update To Do
@@ -528,13 +561,13 @@ app.post('/api/users/:username/todos/:todoID', async (req, res) => {
         return;
     }
 
-    result.todo = todo;
+    result.data = todo;
 
     userRepository.updateUser(user);
 
-    console.log();
+    console.log("updated user:", user);
 
-    res.status(200).send({status: true, message: 'To Do Updated.'});
+    res.status(200).send({status: true, message: 'To Do Updated.', 'todo-id': todoID, 'todo': todo, 'date-created': result.date});
 });
 
 
