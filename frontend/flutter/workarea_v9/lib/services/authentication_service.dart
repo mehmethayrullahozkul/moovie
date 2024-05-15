@@ -5,7 +5,7 @@ import 'package:workarea_v9/repository/user_repository.dart';
 
 class AuthenticationService {
   UserModel? user;
-  String secretData = "";
+  String? secretData = "";
   final ValueNotifier<bool> auth = ValueNotifier<bool>(false);
   late final UserRepository userRepository;
 
@@ -39,15 +39,34 @@ class AuthenticationService {
 
   Future<void> signIn(
       {required String username, required String password}) async {
-    // TODO: Implement the signIn method
+    user = await userRepository.signIn(username: username, password: password);
+    bool authenticated;
+    print("asdasd");
+    if (user != null) {
+      if (user!.username == username) {
+        print(user!.username);
+        auth.value = true;
+        auth.notifyListeners();
+        //  return true;
+      }
+    } else {
+      print("False");
+      auth.value = false;
+      auth.notifyListeners();
+
+      // return false;
+    }
   }
 
   Future<void> signOut() async {
     auth.value = false;
     auth.notifyListeners();
+    user = null;
+    secretData = null;
   }
 
   Future<void> getSecretData() async {
-    // TODO: Implement the getSecretData method
+    secretData = await userRepository.getSecretData(
+        userCredentials: user!.userCredentials);
   }
 }

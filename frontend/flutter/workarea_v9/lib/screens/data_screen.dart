@@ -65,7 +65,9 @@ class _DataScreenState extends State<DataScreen>
             }),
             ElevatedButton(
                 onPressed: () {
-                  // TODO: Add logic here
+                  BlocProvider.of<SecretDataBloc>(context)
+                      .add(SecretDataRequested());
+                  setState(() {});
                 },
                 child: Text("Get Secret Data")),
             SizedBox(
@@ -73,7 +75,12 @@ class _DataScreenState extends State<DataScreen>
             ),
             ElevatedButton(
                 onPressed: () {
-                  // TODO : Implement logout button here
+                  BlocProvider.of<AuthenticationBloc>(context)
+                      .add(AuthenticationLogoutButtonPressed());
+                  BlocProvider.of<SecretDataBloc>(context)
+                      .add(SecretDataInitial());
+
+                  setState(() {});
                 },
                 child: Text("Logout"))
           ],

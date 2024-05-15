@@ -32,8 +32,7 @@ final class UserModel {
       emailAddress: json['emailAddress'],
       userCredentials: UserCredentialsModel.create(
         username: json['userCredentials']['username'],
-        accessToken: json['userCredentials']['accessToken'],
-        refreshToken: json['userCredentials']['refreshToken'],
+        accessToken: json['userCredentials']['accessToken'],       
       ),
       isValid: json['isValid'],
     );

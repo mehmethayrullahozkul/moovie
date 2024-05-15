@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:workarea_v9/models/user/user_credentials_model.dart';
 import 'package:workarea_v9/services/authentication_service.dart';
 
 part 'secret_data_event.dart';
@@ -9,6 +10,12 @@ class SecretDataBloc extends Bloc<SecretDataEvent, SecretDataState> {
   final AuthenticationService authenticationService;
   SecretDataBloc({required this.authenticationService})
       : super(SecretDataUninitialized()) {
-    // TODO: implement here
+    on<SecretDataRequested>((event, emit) async {
+      await authenticationService.getSecretData();
+      emit(SecretDataLoaded(secretData: authenticationService.secretData));
+    });
+    on<SecretDataInitial>((event, emit) async {
+      emit(SecretDataUninitialized());
+    });
   }
 }
