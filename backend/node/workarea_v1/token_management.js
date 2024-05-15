@@ -97,7 +97,7 @@ module.exports = {
         if(!is_token_sign_valid)
             return {status: false, result: {rsa: false, hsa: null}, error: 'token_authentication_failed'};
 
-        console.log(token_primary + '.' + hashed_data);
+        /* console.log(token_primary + '.' + hashed_data); */
         try 
         {
             const is_token_valid = await jwt.verify(token_primary + '.' + hashed_data, process.env.TOKEN_SECRET, sha_VerifyOptions);

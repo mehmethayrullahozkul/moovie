@@ -27,7 +27,7 @@ app.use(accessTokenValidation);
 
 async function accessTokenValidation(req, res, next) {
 
-    if(req.path == '/api/login')
+    if(req.path == '/api/login' || req.path == '/getsomerandomwordpairs')
     {
         next();
         return;
@@ -46,9 +46,6 @@ async function accessTokenValidation(req, res, next) {
     }
 
 
-    const [h, p, s] = token.split('.');
-    const decodedPayload = JSON.parse(base64url.decode(p));
-    const tokenUsername = decodedPayload.username;
 
     q = await tokenManagement.verifyToken(token);
 
@@ -61,6 +58,25 @@ async function accessTokenValidation(req, res, next) {
     }
 }
 
+function parseAccessTokenUsername(token)
+{
+    const [h, p, s] = token.split('.');
+    const decodedPayload = JSON.parse(base64url.decode(p));
+    if(decodedPayload.username == undefined || decodedPayload.username == null || decodedPayload.username == '')
+    {
+        return null;
+    }
+    return decodedPayload.username;
+}
+
+function validString(data)
+{
+    if(!data || data == undefined || data == null || typeof data !== 'string' || data == '')
+    {
+        return false;
+    }
+    return true;
+}
 
 
 
@@ -86,8 +102,8 @@ app.get('/', (req, res) => {
     res.status(200).send({status: true, message: 'Server is running.'});
 });
 
-app.get('/banana', async (req, res) => {
-    res.status(200).send({status: true, message: 'Banana is eaten alive.'});
+app.get('/api/status', async (req, res) => {
+    res.status(200).send({status: true, server: 'good', message: 'Banana is eaten alive.'});
 });
 
 app.get('/getrandomwordpairs', async (req, res) => {
@@ -186,43 +202,53 @@ app.post('/api/login', async (req, res) => {
 });
 
 
-
+// Register User
 app.post('/api/users', async (req, res) => {
 
-    const {username, password, mail, secretData} = req.body;
+    const {username, password, mail, secret} = req.body;
 
 
-    if(!username || !password || !mail || !secretData)
+    if(!username || !password || !mail || !secret)
     {
         res.status(400).send({status: false, error: 'Username, password, mail or secret data is missing.'});
         return;
     }
 
-    if(typeof username !== 'string' || typeof password !== 'string' || typeof mail !== 'string' || typeof secretData !== 'string')
+    if(typeof username !== 'string' || typeof password !== 'string' || typeof mail !== 'string' || typeof secret !== 'string')
     {
         res.status(400).send({status: false, error: 'Username, password, mail or secret data is not a string.'});
         return;
     }
 
-    if(userRepository.hasUser(username) != null)
+    if(userRepository.hasUser(username))
     {
         res.status(400).send({status: false, error: 'User already exists.'});
         return;
     }
 
-    userRepository.addUser(username, password, mail, secretData);
+    userRepository.addUser(username, password, mail, secret, 0, []);
 
 
     res.status(200).send({status: true, message: 'User added.'});
 });
 
+
+// Get User
 app.get('/api/users/:username', async (req, res) => {
     
-    const {username} = req.params.username;
+    const username = req.params.username;
 
     if(!username || username == undefined || username == null || typeof username !== 'string' || username == '')
     {
         res.status(400).send({status: false, error: 'Username is missing.'});
+        return;
+    }
+
+    const tokenUsername = parseAccessTokenUsername(req.headers['authorization']);
+
+    if(tokenUsername !== username)
+    {
+        res.status(400).send({status: false, error: 'Username is not matching with token.'});
         return;
     }
 
@@ -238,15 +264,16 @@ app.get('/api/users/:username', async (req, res) => {
 });
 
 
+// Update User Secret
 app.post('/api/users/:username/secret', async (req, res) => {
 
 
     const username = req.params.username;
-    const secretData = req.body['secret-data'];
+    const secret = req.body['secret'];
 
-    if(validString(secretData) == false || validString(username) == false)
+    if(validString(secret) == false || validString(username) == false)
     {
-        res.status(400).send({status: false, error: 'Secret data or username is missing.'});
+        res.status(400).send({status: false, error: 'Secret or username is missing.'});
         return;
     }
     var user = userRepository.getUser(username);
@@ -257,7 +284,7 @@ app.post('/api/users/:username/secret', async (req, res) => {
         return;
     }
 
-    user.secretdata = secretData;
+    user.secret = secret;
 
     res.status(200).send({status: true, message: 'Secret data updated.'});
 
@@ -265,8 +292,8 @@ app.post('/api/users/:username/secret', async (req, res) => {
 
 
 
+// Get User Secret
 app.get('/api/users/:username/secret', async (req, res) => {
-
 
     const username = req.params.username;
 
@@ -283,21 +310,16 @@ app.get('/api/users/:username/secret', async (req, res) => {
         return;
     }
 
-    res.status(200).send({status: true, 'secret-data': user.secretData});
+
+    res.status(200).send({status: true, 'secret': user.secret});
 
 }); 
 
 
-function validString(data)
-{
-    if(!data || data == undefined || data == null || typeof data !== 'string' || data == '')
-    {
-        return false;
-    }
-    return true;
-}
 
 
+
+// Add To Do
 app.post('/api/users/:username/todos', async (req, res) => {
 
     const username = req.params.username;
@@ -317,7 +339,7 @@ app.post('/api/users/:username/todos', async (req, res) => {
         return;
     }
 
-    const id = strutl.uid(todo);
+    
     const user  = userRepository.getUserAsObject(username);
 
     const user2 = userRepository.getUser(username);
@@ -328,10 +350,12 @@ app.post('/api/users/:username/todos', async (req, res) => {
         res.status(400).send({status: false, error: 'User not found.'});
         return;
     }
+
+    const todoDate = new Date().toISOString();
+    const todoID = strutl.uid(todo + todoDate);
     
-    user.addTODOwithID(id, todo);
+    user.addTODOwithID(todoID, todo, todoDate);
     userRepository.updateUser(user);
-  
 
     const after = userRepository.getUserAsObject(username);
     
@@ -341,6 +365,7 @@ app.post('/api/users/:username/todos', async (req, res) => {
 });
 
 
+// Get To Do List
 app.get('/api/users/:username/todos', async (req, res) => {
 
     const username = req.params.username;
@@ -369,6 +394,7 @@ app.get('/api/users/:username/todos', async (req, res) => {
 });
 
 
+// Get To Do
 app.get('/api/users/:username/todos/:todoID', async (req, res) => {
 
     const username = req.params.username;
@@ -381,16 +407,15 @@ app.get('/api/users/:username/todos/:todoID', async (req, res) => {
 
 
 
-    const todo = req.params.todoID;
+    const todoID = req.params.todoID;
 
 
-    if(validString(todo) == false)
+    if(validString(todoID) == false)
     {
-        res.status(400).send({status: false, error: 'To Do is missing.'});
+        res.status(400).send({status: false, error: 'To Do is not found.'});
         return;
     }
 
-    const id = strutl.uid(todo);
 
     var user = userRepository.getUser(username);
 
@@ -400,7 +425,7 @@ app.get('/api/users/:username/todos/:todoID', async (req, res) => {
         return;
     }
 
-    const result = user.todo.list.find(x => x.id === id);
+    const result = user.todo.list.find(x => x.id === todoID);
 
     if(result == null)
     {
@@ -408,11 +433,13 @@ app.get('/api/users/:username/todos/:todoID', async (req, res) => {
         return;
     }
 
-    res.status(200).send({status: true, todo: result.todo});
+    console.log(result);
+    res.status(200).send({status: true, todo: result.data});
 
 });
 
 
+// Delete To Do
 app.delete('/api/users/:username/todos/:todoID', async (req, res) => {
     
         const username = req.params.username;
@@ -456,6 +483,7 @@ app.delete('/api/users/:username/todos/:todoID', async (req, res) => {
         res.status(200).send({status: true, message: 'To Do deleted.'});
 });
 
+// Update To Do
 app.post('/api/users/:username/todos/:todoID', async (req, res) => {
     
     const username = req.params.username;
@@ -503,6 +531,8 @@ app.post('/api/users/:username/todos/:todoID', async (req, res) => {
     result.todo = todo;
 
     userRepository.updateUser(user);
+
+    console.log();
 
     res.status(200).send({status: true, message: 'To Do Updated.'});
 });

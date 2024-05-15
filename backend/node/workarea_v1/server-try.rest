@@ -1,90 +1,101 @@
-GET http://193.57.41.54:3040/getrandomwordpairs
+
+@host = http://localhost:3040
+
+GET {{host}}/getrandomwordpairs
 Content-Type: application/json
 
 {
     "count": 5
 }
 ###
-
-POST http://193.57.41.54:3040/api/login
+POST {{host}}/api/login
 Content-Type: application/json
 
 {
-    "username": "mehmet",
-    "password": "123456"
-}
-###
-
-
-GET http://193.57.41.54:3040/api/secret-data
-Content-Type: application/json
-
-{
-    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ",
-        "username": "mehmet"
-}
-###
-POST http://localhost:3040/api/add-user
-
-###
-GET http://localhost:3040/api/get-user
-Content-Type: application/json
-
-{
-    "username": "ali"
+    "username": "batu",
+    "password": "123"
 }
 
 
+# ADD NEW USER
 ###
-POST http://localhost:3040/api/update-secret
-Content-Type: application/json
-
-{
-    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTY4MDI3NiwiZXhwIjoxNzI2MDQ4Mjc2fQ.bf7fF3tm5LfkSOjBQZ2mWQZl9fXNjLDyQtDcfM_Q9IYOBaNvmvYJSx_AE6tOhGAn6zyyH78xWCNnmXihZSCNmQlKZDekpB9vnKOab_ePRYbMC353bAMM_Y8vJpLFu_Hs-8PZMA_Oad0ZqMvsPcre1lZrcat24kdarKQBL_TXWSMgZr_7nMSslDF1ZlUcfIg19j1kEpzMcDAVZeNp1tKzArABO1vSAhHHRsY0ozCWaO2uwKq6YZMNxFrdeVZDIJB7vRlrXM7rGbE8BkmTvDq3s5jG-s7W5n8DCR_laaRWo_NQ_9O8vQsVu9pOEZDUiNDIRqtb5m2dAbZbrG9lmTuoMw",
-    "username": "mehmet",
-    "secret-data": "mehmets new other"
-}
-
-
-###
-POST http://localhost:3040/api/users/mehmet/todo/add
-Content-Type: application/json
-
-{
-    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ",
-    "username": "mehmet",
-    "todo": "mehasadsfdsfadsadasdsaddsfdsadasdsfsadsaodo"
-}
-
-
-###
-GET http://localhost:3040/api/users/mehmet/todos
+POST {{host}}/api/users
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
 
 {
-    "username": "mehmet",
-    "todo": "mehmewsfsdfdsrewrwrts new todo"
+    "username": "batu",
+    "password": "123",
+    "mail": "batu@gmail.com",
+    "secret": "batu secret"
 }
 
 
+# GET USER
 ###
-POST http://localhost:3040/api/users/mehmet/todos
+GET {{host}}/api/users/mehmet
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
+
+
+
+# GET USER SECRET
+###
+GET {{host}}/api/users/mehmet/secret
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
+
+
+
+# UPDATE SECRET
+###
+POST {{host}}/api/users/mehmet/secret
+Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
+Content-Type: application/json
+
+{
+    "secret": "mehmets new other secret"
+}
+
+
+# ADD NEW TODO
+###
+POST {{host}}/api/users/mehmet/todos
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
 
 {
-    "username": "mehmet",
-    "todo": "2"
+    "todo": "mehmet's todo 2"
 }
 
 
+# GET ALL TODOS
 ###
-DELETE http://localhost:3040/api/users/mehmet/todos/072234102080139202
+GET {{host}}/api/users/mehmet/todos
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
 
+
+# GET THE TODO
+###
+GET {{host}}/api/users/mehmet/todos/056160042219240154
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
+
+
+# UPDATE TODO
+###
+POST {{host}}/api/users/mehmet/todos/147243030112008002
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ
+    
 {
-    "username": "mehmet",
-    "todo": "2"
+    "todo": "mehmets new todo is changed"
 }
+
+
+# DELETE TODO
+###
+DELETE {{host}}/api/users/mehmet/todos/220251072251052124
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1laG1ldCIsImlhdCI6MTcxNTE5MDA1OSwiZXhwIjoxNzI1NTU4MDU5fQ.mfotL8wrp3kydPieo4-rcp3_6aLZG2X6mmoxnwcRHM2k13PPfMWm5ae85LqFJgeZXMzO3tuSQZOSDLrOOAYUQ7pvL1n1t-z6EGWLOoGOWZnVluqPBusB8OFxr9UUkrcL73z4k3ehqG0Hy7HHmz3qykOI_amecOxi77v1vXXaVmeqBqcLXcen5pgg4r42I9YV8EXe8J2ED9h-Ll5ViiT2tZopf-kBzvU5oJX1bKHvTM_LgaU4iYHCRGwTpJ3oh5LRqFUsb6S_XLDbYUDppJHAjW8xJQU-VwQgiI8vshsepDwpDvtb8XjC1ZgYybbA6h-n9JufuXP2McdAo0OPvvXtXQ

@@ -6,13 +6,13 @@ class UserRepository {
 
 
   constructor() {
-    this.addUser(new User('mehmet', 'mehmet@gmail.com', '123456', 'mehmet has something to hide', 0, []));
-    this.addUser(new User('ali', 'ali@gmail.com', '123456', 'ali has something to hide', 0, []));
-    this.addUser(new User('furkan', 'furkan@gmail.com', '123456', 'furkan has something to hide', 0, []));
-    this.addUser(new User('taha', 'taha@gmail.com', '123456', 'taha has something to hide', 0, []));
+    this.addUserAsObject(new User('mehmet', 'mehmet@gmail.com', '123456', 'mehmet has something to hide', 0, []));
+    this.addUserAsObject(new User('ali', 'ali@gmail.com', '123456', 'ali has something to hide', 0, []));
+    this.addUserAsObject(new User('furkan', 'furkan@gmail.com', '123456', 'furkan has something to hide', 0, []));
+    this.addUserAsObject(new User('taha', 'taha@gmail.com', '123456', 'taha has something to hide', 0, []));
   }
 
-  addUser(user) {
+  addUserAsObject(user) {
     
     if(typeof user === 'object' && user instanceof User)
     {
@@ -34,7 +34,7 @@ class UserRepository {
         username: user.username,
         password: user.password,
         mail: user.mail,
-        secretdata: user.secretData,
+        secret: user.secret,
         todo: {
           count: user.todoCount,
           list: todoList,
@@ -43,6 +43,34 @@ class UserRepository {
       });
       return true;
     }
+  }
+
+
+  addUser(username, password, mail, secret, todoCount, todoListComing) { 
+      if(this.hasUser(username))
+      {
+        return false;
+      }
+      let todoList = [];
+      for (const element of todoListComing) {
+        const todo = {
+          id: element.id,
+          data: element.data
+        };
+        todoList.push(todo);
+      }
+      users.insert({
+        username: username,
+        password: password,
+        mail: mail,
+        secret: secret,
+        todo: {
+          count: todoCount,
+          list: todoList,
+        },
+        done: false
+      });
+      return true;
   }
 
   getUser(username) {
@@ -60,7 +88,7 @@ class UserRepository {
       const todo = new TODO(element.id, element.data);
       todoList.push(todo);
     }
-    return new User(username, user.mail, user.password, user.secretdata, user.todo.count, todoList);
+    return new User(username, user.mail, user.password, user.secret, user.todo.count, todoList);
   }
 
   hasUser(username) {
@@ -96,7 +124,7 @@ class UserRepository {
         const result = users.by('username', user.username);
         result.password = user.password;
         result.mail = user.mail;
-        result.secretdata = user.secretData;
+        result.secret = user.secret;
 
         let todoList = [];
         for (const element of user.todoList) {
@@ -144,10 +172,12 @@ class UserRepository {
 class TODO {
   data = '';
   id = '';
+  date = '';
 
-  constructor(id, data) {
+  constructor(id, data, date) {
     this.id = id;
     this.data = data;
+    this.date = date;
   }
 }
 
@@ -157,16 +187,16 @@ class User {
   username = '';
   mail = '';
   password = '';
-  #secretData = '';
+  #secret = '';
   todoCount = 0;
   todoList = [];
 
-  get secretData() {
-    return this.#secretData;
+  get secret() {
+    return this.#secret;
   }
 
-  set secretData(value) {
-    this.#secretData = value;
+  set secret(value) {
+    this.#secret = value;
   }
 
   hasTODO(todoID) {
@@ -186,10 +216,10 @@ class User {
     }
   }
 
-  addTODOwithID(todoID, todoString){
+  addTODOwithID(todoID, todoString, todoDate){
     if(!this.hasTODO(todoID))
     {
-      const todo = new TODO(todoID, todoString);
+      const todo = new TODO(todoID, todoString, todoDate);
       this.todoList.push(todo);
       this.todoCount++;
       
@@ -232,11 +262,11 @@ class User {
   }
 
 
-  constructor(username, mail, password, secretData, todoCount, todoList) {
+  constructor(username, mail, password, secret, todoCount, todoList) {
     this.username = username;
     this.mail = mail;
     this.password = password;
-    this.#secretData = secretData;
+    this.#secret = secret;
     this.todoCount = todoCount;
     this.todoList = todoList;
   }
